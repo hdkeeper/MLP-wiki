@@ -1,0 +1,17 @@
+AddDefaultCharset UTF-8
+RewriteEngine On
+RewriteRule ^$ index.php [L]
+
+# Existing static files
+RewriteCond %{REQUEST_FILENAME} \.(jpe?g|gif|png|css|js|html?)$
+RewriteCond %{QUERY_STRING} !edit=?
+RewriteCond %{REQUEST_FILENAME} -f 
+RewriteRule ^(.*)$ $1 [L]
+
+# Dynamic or non-existing pages
+RewriteCond %{REQUEST_FILENAME} !index\.php$
+RewriteCond %{REQUEST_FILENAME} !\.(jpe?g|gif|png|css|js|html?)$ [OR]
+RewriteCond %{QUERY_STRING} edit=? [OR]
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteRule ^(.*)$ index.php?title=$1&%{QUERY_STRING} [L]
+

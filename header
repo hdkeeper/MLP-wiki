@@ -1,0 +1,12 @@
+<html>
+<head>
+<title><?=htmlspecialchars($title)?></title>
+<link href="/main.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+
+<small>
+<a href="/">Главная</a>
+<a href="/index.php?title=<?=htmlspecialchars($title)?>&edit">Правка</a><br>
+</small>
